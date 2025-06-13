@@ -10,7 +10,7 @@ let
     url = "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
   };
 
-  #
+  # Import wallpaper from GitHub.
   wallpaper = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/geovanmafra/nixos/refs/heads/main/wallpaper.jpg";
   };
