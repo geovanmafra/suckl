@@ -11,7 +11,7 @@ let
   };
 
   # Import wallpaper from GitHub.
-  wallpaper = pkgs.fetchurl {
+  wallpaper = pkgs.fetchFromGitHub {
     url = "https://raw.githubusercontent.com/geovanmafra/nixos/refs/heads/main/wallpaper.jpg";
   };
 in
