@@ -10,29 +10,34 @@
       ./hardware-configuration.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    # Use the systemd-boot EFI boot loader.
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+  };
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking = {
+    hostName = "e14"; # Define your hostname.
+
+    # Pick only one of the below networking options.
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+
+    # Configure network proxy if necessary
+    # proxy.default = "http://user:password@proxy:port/";
+    # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  };
 
   # Set your time zone.
-  # time.timeZone = "Europe/Amsterdam";
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  time.timeZone = "America/Sao_Paulo";
 
   # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
+  i18n.defaultLocale = "en_GB.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "br-abnt2";
+    #  useXkbConfig = true; # use xkb.options in tty.
+  };
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
