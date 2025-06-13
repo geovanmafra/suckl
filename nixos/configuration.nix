@@ -112,6 +112,9 @@ in
     home.stateVersion = "25.05"; # Please read the comment before changing.
   };
 
+  # Allow proprietary software.
+  nixpkgs.config.allowUnfree = true;
+
   # List packages installed in system profile. You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     wget
@@ -134,9 +137,16 @@ in
       vimAlias = true;
     };
 
+    # Terminal emulator.
     foot = {
       enable = true;
       theme = "catppuccin-mocha";
+    };
+
+    # Browser.
+    firefox = {
+      enable = true;
+      nativeMessagingHosts.packages = with pkgs; [ uget-integrator ];
     };
   };
 
