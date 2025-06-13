@@ -140,6 +140,14 @@ in
     qview # Image viewer.
     isoimagewriter
 
+    # GTK.
+    gtk-engine-murrine # Theme engine.
+    gnome-themes-extra
+    zenity # Dialog Box.
+    gnome-disk-utility # Udisks graphical front-end.
+    gparted # Disk partitioning tool.
+    pwvucontrol
+
     # Hyprland.
     hyprland-protocols
     hyprland-qt-support
@@ -151,6 +159,28 @@ in
     waybar
     playerctl
     brightnessctl
+
+    # Gaming.
+    bottles
+    ares
+    mednaffe
+    # Sony.
+    duckstation
+    pcsx2
+    rpcs3
+    ppsspp-qt
+    # Nintendo.
+    dolphin-emu
+    cemu
+    azahar
+
+    # Daily.
+    keepassxc
+    discord
+    krita
+    krita-plugin-gmic
+    obs-studio
+    davinci-resolve
   ];
 
   # Some programs need SUID wrappers, can be configured further or are started in user sessions.
