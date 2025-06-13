@@ -12,7 +12,7 @@ let
 
   # Import wallpaper from GitHub.
   wallpaper = pkgs.fetchFromGitHub {
-    url = "https://raw.githubusercontent.com/geovanmafra/nixos/refs/heads/main/wallpaper.jpg";
+    url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/97444e18b7fe97705e8caedd29ae05e62cb5d4b7/wallpapers/nixos-wallpaper-catppuccin-mocha.png";
   };
 in
 
