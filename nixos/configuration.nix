@@ -342,19 +342,19 @@ in
   # List services that you want to enable:
   services = {
     # Enable the X11 windowing system.
-    # services.xserver.enable = true;
+    # xserver.enable = true;
 
     # Configure keymap in X11
-    # services.xserver.xkb.layout = "us";
-    # services.xserver.xkb.options = "eurosign:e,caps:escape";
+    # xserver.xkb.layout = "us";
+    # xserver.xkb.options = "eurosign:e,caps:escape";
 
     # Enable CUPS to print documents.
-    # services.printing.enable = true;
+    # printing.enable = true;
 
     # Enable sound.
     # services.pulseaudio.enable = true;
     # OR
-    services.pipewire = {
+    pipewire = {
       enable = true;
       pulse.enable = true;
       jack.enable = true;
