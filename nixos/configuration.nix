@@ -91,6 +91,17 @@ in
   home-manager.users.user = { pkgs, ... }: {
     home.packages = [ pkgs.atool pkgs.httpie pkgs.libsForQt5.qt5ct pkgs.libsForQt5.kde-gtk-config ];
 
+    # Set environment variables.
+    home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    QT_STYLE_OVERRIDE = "Fusion";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    GDK_BACKEND = "wayland";
+    CLUTTER_BACKEND= "wayland";
+    };
+
     # Bash settings.
     programs.bash = {
       enable = true;
@@ -105,6 +116,87 @@ in
     programs.oh-my-posh = {
       enable = true;
       useTheme = "clean-detailed";
+    };
+
+    # Cursor theme.
+    home.pointerCursor = {
+      package = pkgs.catppuccin-cursors.mochaLavender;
+      name = "Catppuccin Mocha Lavender";
+      size = 24;
+      enable = true;
+      hyprcursor.enable = true;
+      x11.enable = true;
+      gtk.enable = true;
+    };
+
+    # Polkit agent.
+    services.hyprpolkitagent.enable = true;
+
+    # Wallpaper.
+    home.file = {
+      ".wallpaper/wallpaper.png".source = wallpaper;
+    };
+    services.hyprpaper = {
+      enable = true;
+      settings = {
+        ipc = "on";
+        splash = false;
+        splash_offset = 2.0;
+
+        preload =
+          [ "$HOME/.wallpaper/wallpaper.jpg" ];
+
+        wallpaper =
+          [ "eDP-1,$HOME/.wallpaper/wallpaper.jpg" ];
+      };
+    };
+
+    # Lock screen utility.
+    services.hyprlock = {
+      enable = true;
+    };
+
+    # Idle daemon.
+    services.hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = "pidof hyprlock || hyprlock";       # avoid starting multiple hyprlock instances.
+          before_sleep_cmd = "loginctl lock-session";    # lock before suspend.
+          after_sleep_cmd = "hyprctl dispatch dpms on";  # to avoid having to press a key twice to turn on the display.
+        };
+
+        listener = [
+          {
+            timeout = 150;                                  # 2.5min.
+            on-timeout = "brightnessctl -s set 10";         # set monitor backlight to minimum, avoid 0 on OLED monitor.
+            on-resume = "brightnessctl -r";                 # monitor backlight restore.
+          }
+
+          # turn off keyboard backlight, comment out this section if you dont have a keyboard backlight.
+          {
+            timeout = 150;                                            # 2.5min.
+            on-timeout = "brightnessctl -sd rgb:kbd_backlight set 0"; # turn off keyboard backlight.
+            on-resume = "brightnessctl -rd rgb:kbd_backlight";        # turn on keyboard backlight.
+          }
+
+          {
+            timeout = 300;                                   # 5min.
+            on-timeout = "loginctl lock-session";            # lock screen when timeout has passed.
+          }
+
+          {
+            timeout = 330;                                   # 5.5min.
+            on-timeout = "hyprctl dispatch dpms off";        # screen off when timeout has passed.
+            on-resume = "hyprctl dispatch dpms on";          # screen on when activity is detected after timeout has fired.
+          }
+
+          {
+            timeout = 1800;                                # 30min.
+            on-timeout = "systemctl suspend";              # suspend pc.
+          }
+        ];
+      };
     };
 
     # This value determines the Home Manager release that your configuration is
