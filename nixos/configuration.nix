@@ -78,9 +78,6 @@
 
   # List services that you want to enable:
   services = {
-    # Enable the OpenSSH daemon.
-    openssh.enable = true;
-
     # Enable the X11 windowing system.
     # services.xserver.enable = true;
 
@@ -101,6 +98,9 @@
 
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
+
+    # Enable the OpenSSH daemon.
+    openssh.enable = true;
   };
 
   # Copy the NixOS configuration file and link it from the resulting system
