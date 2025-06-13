@@ -120,6 +120,7 @@ in
     # TTY.
     btop # Resource monitor.
     neofetch # System informations.
+
     # Utilities.
     wget
     git
@@ -129,14 +130,27 @@ in
     grimblast # Screenshot support.
     mako # Notification daemon.
     wofi # Application Launcher.
-    qview # Image viewer.
     mpv # Media player.
     xdg-utils # Set of command line tools that assist applications.
+
     # QT.
     kdePackages.ark # Archive manager.
     kdePackages.dolphin # File manager.
     ffmpegthumbnailer # Preview for videos.
+    qview # Image viewer.
     isoimagewriter
+
+    # Hyprland.
+    hyprland-protocols
+    hyprland-qt-support
+    hyprland-qtutils
+    hyprcursor
+    hyprpicker
+
+    # Waybar.
+    waybar
+    playerctl
+    brightnessctl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are started in user sessions.
