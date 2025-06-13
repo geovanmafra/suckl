@@ -4,10 +4,25 @@
 
 { config, lib, pkgs, ... }:
 
+let
+  # Import Home Manager without nix-channel.
+  home-manager = builtins.fetchTarball {
+    url = "https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz";
+  };
+
+  #
+  wallpaper = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/geovanmafra/nixos/refs/heads/main/wallpaper.jpg";
+  };
+in
+
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+
+      # Introduce a new option called home-manager.users who maps the user to Home Manager configuration.
+      "${home-manager}/nixos"
     ];
 
   boot = {
