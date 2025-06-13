@@ -26,6 +26,12 @@ in
     ];
 
   boot = {
+    # Use the latest kernel.
+    kernelPackages = pkgs.linuxPackages_zen; # More options available at https://nixos.wiki/wiki/Linux_kernel.
+
+    # Load additional drivers for certain vendors (I.E: Wacom, Intel, etc.)
+    initrd.unl0kr.allowVendorDrivers = true;
+
     # Use the systemd-boot EFI boot loader.
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
