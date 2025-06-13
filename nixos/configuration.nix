@@ -46,7 +46,7 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.alice = {
+  users.users.user = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
@@ -60,39 +60,48 @@
     wget
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  # Some programs need SUID wrappers, can be configured further or are started in user sessions.
+  programs = {
+    # programs.mtr.enable = true;
+    # programs.gnupg.agent = {
+    #   enable = true;
+    #   enableSSHSupport = true;
+    # };
+
+    nano.enable = false;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      vimAlias = true;
+    };
+  };
 
   # List services that you want to enable:
+  services = {
+    # Enable the OpenSSH daemon.
+    openssh.enable = true;
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+    # Enable the X11 windowing system.
+    # services.xserver.enable = true;
 
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+    # Configure keymap in X11
+    # services.xserver.xkb.layout = "us";
+    # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
+    # Enable CUPS to print documents.
+    # services.printing.enable = true;
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
+    # Enable sound.
+    # services.pulseaudio.enable = true;
+    # OR
+    services.pipewire = {
+      enable = true;
+      pulse.enable = true;
+    };
 
-  # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
+    # Enable touchpad support (enabled default in most desktopManager).
+    libinput.enable = true;
+  };
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
