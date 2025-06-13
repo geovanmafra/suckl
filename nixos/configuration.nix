@@ -152,7 +152,7 @@ in
     };
 
     # Lock screen utility.
-    services.hyprlock = {
+    programs.hyprlock = {
       enable = true;
     };
 
