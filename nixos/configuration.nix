@@ -133,8 +133,8 @@ in
     nano.enable = false;
     neovim = {
       enable = true;
-      defaultEditor = true;
       vimAlias = true;
+      defaultEditor = true;
     };
 
     # Terminal emulator.
@@ -217,6 +217,11 @@ in
       };
     };
   };
+
+  # List hardware services that you want to enable:
+  hardware.bluetooth.enable = true;
+  security.rtkit.enable = true;
+  security.pam.services.hyprlock = {};
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
