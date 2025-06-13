@@ -35,6 +35,12 @@ in
     # Use the systemd-boot EFI boot loader.
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
+
+    # Enable quiet boot.
+    plymouth = {
+      enable = true;
+      theme = ;
+    };
   };
 
   networking = {
