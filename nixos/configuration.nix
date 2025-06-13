@@ -117,8 +117,26 @@ in
 
   # List packages installed in system profile. You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    # TTY.
+    btop # Resource monitor.
+    neofetch # System informations.
+    # Utilities.
     wget
-    kdePackages.dolphin
+    git
+    ntfs3g
+    uget # Download manager.
+    wl-clipboard
+    grimblast # Screenshot support.
+    mako # Notification daemon.
+    wofi # Application Launcher.
+    qview # Image viewer.
+    mpv # Media player.
+    xdg-utils # Set of command line tools that assist applications.
+    # QT.
+    kdePackages.ark # Archive manager.
+    kdePackages.dolphin # File manager.
+    ffmpegthumbnailer # Preview for videos.
+    isoimagewriter
   ];
 
   # Some programs need SUID wrappers, can be configured further or are started in user sessions.
