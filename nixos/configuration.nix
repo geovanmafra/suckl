@@ -39,7 +39,7 @@ in
     # Enable quiet boot.
     plymouth = {
       enable = true;
-      theme = ;
+      theme = catppuccin-plymouth;
     };
   };
 
@@ -69,7 +69,7 @@ in
   console = {
     font = "Lat2-Terminus16";
     keyMap = "br-abnt2";
-    #  useXkbConfig = true; # use xkb.options in tty.
+    # useXkbConfig = true; # use xkb.options in tty.
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -81,7 +81,7 @@ in
     ];
   };
 
-  #
+  # Define a user account for Home Manager.
   home-manager.backupFileExtension = "backup";
   home-manager.users.user = { pkgs, ... }: {
     home.packages = [ pkgs.atool pkgs.httpie ];
