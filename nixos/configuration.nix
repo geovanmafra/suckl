@@ -155,6 +155,7 @@ in
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
+    nerd-fonts.meslo-lg # For Oh My Posh.
     font-awesome # For Waybar icons.
   ];
 
