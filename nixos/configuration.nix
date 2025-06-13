@@ -150,6 +150,14 @@ in
     };
   };
 
+  # List fonts accessible to applications.
+  fonts.packages = with pkgs; [
+    noto-fonts
+    noto-fonts-cjk-sans
+    noto-fonts-emoji
+    font-awesome # For Waybar icons.
+  ];
+
   # List services that you want to enable:
   services = {
     # Enable the X11 windowing system.
