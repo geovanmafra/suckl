@@ -81,6 +81,37 @@ in
     ];
   };
 
+  #
+  home-manager.backupFileExtension = "backup";
+  home-manager.users.user = { pkgs, ... }: {
+    home.packages = [ pkgs.atool pkgs.httpie ];
+
+    # Bash settings.
+    programs.bash = {
+      enable = true;
+      profileExtra = ''
+        clear > /dev/null 2>&1
+        exec &> /dev/null
+        if uwsm check may-start; then
+          exec uwsm start hyprland-uwsm.desktop
+        fi
+      '';
+    };
+    programs.oh-my-posh = {
+      enable = true;
+      useTheme = "clean-detailed";
+    };
+
+    # This value determines the Home Manager release that your configuration is
+    # compatible with. This helps avoid breakage when a new Home Manager release
+    # introduces backwards incompatible changes.
+    #
+    # You should not change this value, even if you update Home Manager. If you do
+    # want to update the value, then make sure to first check the Home Manager
+    # release notes.
+    home.stateVersion = "25.05"; # Please read the comment before changing.
+  };
+
   # List packages installed in system profile. You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     wget
