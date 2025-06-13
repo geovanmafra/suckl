@@ -133,6 +133,11 @@ in
       defaultEditor = true;
       vimAlias = true;
     };
+
+    foot = {
+      enable = true;
+      theme = "catppuccin-mocha";
+    };
   };
 
   # List services that you want to enable:
