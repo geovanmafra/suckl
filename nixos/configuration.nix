@@ -37,6 +37,7 @@ in
     loader.efi.canTouchEfiVariables = true;
 
     # Enable quiet boot.
+    loader.timeout = 0;
     initrd.verbose = false;
     consoleLogLevel = 0;
     kernelParams = [ "quiet" "udev.log_level=3" ];
@@ -208,6 +209,26 @@ in
     foot = {
       enable = true;
       theme = "catppuccin-mocha";
+    };
+
+    hyprland = {
+      enable = true;
+      withUWSM = true;
+      xwayland.enable = true;
+      portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    };
+
+    # Appimage support.
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
+
+    # Java support.
+    java = {
+      enable = true;
+      binfmt = true;
+      package = pkgs.jdk;
     };
 
     # Browser.
