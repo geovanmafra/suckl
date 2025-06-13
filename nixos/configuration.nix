@@ -130,7 +130,7 @@ in
     };
 
     # Polkit agent.
-    services.hyprpolkitagent.enable = true;
+    programs.hyprpolkitagent.enable = true;
 
     # Wallpaper.
     home.file = {
