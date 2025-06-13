@@ -42,7 +42,8 @@ in
     kernelParams = [ "quiet" "udev.log_level=3" ];
     plymouth = {
       enable = true;
-      theme = catppuccin-plymouth;
+      theme = "catppuccin-plymouth";
+      themePackages = [ pkgs.catppuccin-plymouth ];
     };
   };
 
