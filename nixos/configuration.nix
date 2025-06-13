@@ -84,7 +84,7 @@ in
   # Define a user account for Home Manager.
   home-manager.backupFileExtension = "backup";
   home-manager.users.user = { pkgs, ... }: {
-    home.packages = [ pkgs.atool pkgs.httpie ];
+    home.packages = [ pkgs.atool pkgs.httpie pkgs.libsForQt5.qt5ct pkgs.libsForQt5.kde-gtk-config ];
 
     # Bash settings.
     programs.bash = {
@@ -134,6 +134,7 @@ in
     xdg-utils # Set of command line tools that assist applications.
 
     # QT.
+    libsForQt5.qt5ct
     kdePackages.ark # Archive manager.
     kdePackages.dolphin # File manager.
     ffmpegthumbnailer # Preview for videos.
